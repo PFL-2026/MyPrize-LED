@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>MyPrize Sponsored LED Activation</title>
+<meta name="description" content="MyPrize Sponsored LED Activation — a fan-worn LED wristband moment that turns the arena into a synchronised sea of MyPrize blue." />
+
+<!-- Theme & mobile UI -->
+<meta name="theme-color" content="#052383" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="MyPrize LED" />
+<meta name="format-detection" content="telephone=no" />
+
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="assets/favicons/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="48x48" href="assets/favicons/favicon-48.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicons/favicon-192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="assets/favicons/favicon-512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png" />
+<link rel="manifest" href="assets/favicons/site.webmanifest" />
+
+<!-- Open Graph (Facebook, LinkedIn, Slack, iMessage, WhatsApp) -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="MyPrize Sponsored LED Activation" />
+<meta property="og:description" content="A fan-worn LED wristband moment that turns the arena into a synchronised sea of MyPrize blue." />
+<meta property="og:image" content="assets/og-preview.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Professional Fighters League" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="MyPrize Sponsored LED Activation" />
+<meta name="twitter:description" content="A fan-worn LED wristband moment that turns the arena into a synchronised sea of MyPrize blue." />
+<meta name="twitter:image" content="assets/og-preview.jpg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Saira:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* === PFL Brand palette === */
+  :root {
+    --pfl-blue: #052383;
+    --pfl-blue-light: #1a3a9e;
+    --pfl-blue-dark: #031858;
+    --pfl-red: #ff0404;
+    --pfl-red-dark: #c40303;
+    --pfl-grey: #4d4d4d;
+    --pfl-grey-light: #888;
+    --white: #ffffff;
+    --bone: #ececf0;
+    --bg: #0a0b14;
+    --bg-2: #11131e;
+    --panel: #161824;
+    --panel-2: #1d2030;
+    --line: #2a2d3e;
+    --line-2: #3a3d52;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--bone);
+    font-family: 'Saira', sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(ellipse 80% 60% at top, rgba(5,35,131,0.25) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at bottom right, rgba(255,4,4,0.05) 0%, transparent 60%);
+    background-attachment: fixed;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  /* === TOP BAR === */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(10,11,20,0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -2px;
+    height: 2px;
+    background: var(--pfl-red);
+  }
+  .topbar-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  /* Co-branded logo lockup in topbar */
+  .brand-lockup {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .brand-lockup img {
+    height: 28px;
+    width: auto;
+    display: block;
+  }
+  .brand-divider {
+    width: 1px;
+    height: 28px;
+    background: var(--pfl-red);
+    opacity: 0.8;
+  }
+  .top-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--pfl-grey-light);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .top-meta .dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--pfl-red);
+    margin-right: 8px;
+    box-shadow: 0 0 10px rgba(255,4,4,0.6);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .dl-page-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--pfl-red);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 9px 15px;
+    border-radius: 999px;
+    box-shadow: 0 4px 14px rgba(255,4,4,0.32);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .dl-page-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(255,4,4,0.5); }
+  .dl-page-btn svg { width: 13px; height: 13px; }
+
+  /* Download PDF buttons */
+  .btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--pfl-red);
+    color: var(--white);
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 10px 18px;
+    border-radius: 999px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 16px rgba(255,4,4,0.3);
+  }
+  .btn-download:hover {
+    background: var(--pfl-red-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(255,4,4,0.5);
+  }
+  .btn-download svg { width: 14px; height: 14px; }
+
+  /* === HERO === */
+  .hero {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 64px 32px 56px;
+    position: relative;
+  }
+
+  /* Logo eyebrow above the title (large co-brand lockup) */
+  .logo-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 36px;
+  }
+  .logo-eyebrow img {
+    height: 64px;
+    width: auto;
+    display: block;
+  }
+  .logo-eyebrow .logo-divider {
+    width: 2px;
+    height: 56px;
+    background: var(--pfl-red);
+    opacity: 0.9;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--pfl-red);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 36px;
+    height: 2px;
+    background: var(--pfl-red);
+  }
+  .hero h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: clamp(48px, 8vw, 108px);
+    line-height: 0.95;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .hero h1 .red { color: var(--pfl-red); }
+  .hero h1 .ghost {
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(236,236,240,0.5);
+  }
+  .hero-sub {
+    font-family: 'Saira', sans-serif;
+    font-size: 18px;
+    color: var(--pfl-grey-light);
+    max-width: 680px;
+    margin-bottom: 40px;
+    line-height: 1.55;
+  }
+
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-top: 36px;
+  }
+  .hero-meta-cell {
+    padding: 24px;
+    border-right: 1px solid var(--line);
+  }
+  .hero-meta-cell:first-child { padding-left: 0; }
+  .hero-meta-cell:last-child { border-right: none; }
+  .hero-meta-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--pfl-grey-light);
+    margin-bottom: 10px;
+  }
+  .hero-meta-value {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: 0.02em;
+    color: var(--bone);
+    text-transform: uppercase;
+  }
+  .hero-meta-value.fee { color: var(--pfl-red); }
+
+  .hero-cta {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+  .btn-pdf-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--pfl-red);
+    color: var(--white);
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    padding: 14px 24px;
+    border-radius: 999px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 6px 20px rgba(255,4,4,0.3);
+  }
+  .btn-pdf-hero:hover {
+    background: var(--pfl-red-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(255,4,4,0.5);
+  }
+  .btn-pdf-hero svg { width: 16px; height: 16px; }
+  .cta-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--pfl-grey-light);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  /* === SECTIONS === */
+  section { max-width: 1280px; margin: 0 auto; padding: 72px 32px; }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 48px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 20px;
+  }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: var(--pfl-red);
+    letter-spacing: 0.1em;
+    font-weight: 700;
+  }
+  .section-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: clamp(32px, 4.5vw, 52px);
+    text-transform: uppercase;
+    letter-spacing: 0.015em;
+    line-height: 1;
+    flex: 1;
+  }
+  .section-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--pfl-grey-light);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+
+  /* === EVENT GRID === */
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .event-card {
+    background: var(--panel);
+    padding: 32px;
+    position: relative;
+    transition: background 0.3s ease;
+  }
+  .event-card:hover { background: var(--panel-2); }
+  .event-card.featured {
+    background: linear-gradient(135deg, var(--panel) 0%, rgba(5,35,131,0.18) 100%);
+    border-left: 3px solid var(--pfl-red);
+  }
+  .event-card .ev-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--pfl-red);
+    letter-spacing: 0.2em;
+    margin-bottom: 18px;
+    font-weight: 700;
+  }
+  .event-card .ev-city {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin-bottom: 6px;
+  }
+  .event-card .ev-state {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--pfl-grey-light);
+    letter-spacing: 0.18em;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+  .event-card .ev-date {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--bone);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .event-card .ev-tag {
+    position: absolute;
+    top: 28px;
+    right: 28px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--pfl-red);
+    padding: 5px 10px;
+    border: 1px solid var(--pfl-red);
+    border-radius: 2px;
+    background: rgba(255,4,4,0.08);
+  }
+
+  /* === COLLAPSIBLE BLOCK (used for activations AND Partner Access) === */
+  .activations-list, .partner-access-list {
+    border-top: 1px solid var(--line);
+  }
+  .activation {
+    border-bottom: 1px solid var(--line);
+    transition: background 0.3s ease;
+  }
+  .activation:hover { background: rgba(255,255,255,0.015); }
+  .activation.featured {
+    background: linear-gradient(90deg, rgba(5,35,131,0.18) 0%, transparent 60%);
+    border-left: 3px solid var(--pfl-red);
+  }
+  .activation-head {
+    display: grid;
+    grid-template-columns: 60px 1fr auto 40px;
+    gap: 24px;
+    align-items: center;
+    padding: 28px 24px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .activation-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--pfl-grey-light);
+    letter-spacing: 0.1em;
+    font-weight: 700;
+  }
+  .activation-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.015em;
+    line-height: 1.1;
+  }
+  .activation.featured .activation-title {
+    color: #6e92ff;
+  }
+  .activation-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--pfl-grey-light);
+    padding: 6px 10px;
+    border: 1px solid var(--line-2);
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .activation.featured .activation-tag {
+    color: var(--pfl-red);
+    border-color: var(--pfl-red);
+    background: rgba(255,4,4,0.1);
+  }
+  .activation-toggle {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--line-2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: var(--pfl-grey-light);
+  }
+  .activation[open] .activation-toggle {
+    background: var(--pfl-red);
+    border-color: var(--pfl-red);
+    color: var(--white);
+    transform: rotate(45deg);
+  }
+  .activation-toggle svg { width: 14px; height: 14px; }
+  .activation-body {
+    padding: 0 24px 32px 108px;
+    max-width: 920px;
+  }
+  .activation-body p {
+    color: var(--pfl-grey-light);
+    margin-bottom: 12px;
+    font-size: 15px;
+  }
+  .activation-body strong { color: var(--bone); font-weight: 600; }
+  .activation-body ul { list-style: none; }
+  .activation-body li {
+    color: var(--pfl-grey-light);
+    font-size: 15px;
+    padding: 8px 0;
+    padding-left: 24px;
+    position: relative;
+  }
+  .activation-body li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 12px;
+    height: 1px;
+    background: var(--pfl-red);
+  }
+  .activation-body h5 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--pfl-red);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 18px;
+    margin-bottom: 8px;
+  }
+  .activation-body h5:first-child { margin-top: 0; }
+
+  details summary { list-style: none; }
+  details summary::-webkit-details-marker { display: none; }
+  details[open] .activation-body { animation: slideDown 0.4s ease; }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* === LED SHOWCASE === */
+  .led-showcase {
+    margin-top: 36px;
+    position: relative;
+  }
+  /* Stacked equal-size panels — in-arena + on-wrist */
+  .led-panel {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/7;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .led-panel:last-of-type { margin-bottom: 0; }
+  .led-panel-img {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  .led-panel.in-arena .led-panel-img {
+    background-image: url('assets/images/led-in-arena.jpg');
+  }
+  .led-panel.on-wrist .led-panel-img {
+    background-image: url('assets/images/led-on-wrist.jpg');
+  }
+  /* Caption — bottom-left placement, identical on both panels */
+  .led-panel-cap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 28px 24px 16px;
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.85) 100%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--bone);
+    pointer-events: none;
+  }
+
+  /* Full-width stat strip below the product row */
+  .led-stat-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 24px;
+    padding: 24px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--pfl-red);
+  }
+  .led-stat {
+    border-left: 2px solid var(--pfl-red);
+    padding-left: 12px;
+  }
+  .led-stat-num {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--pfl-red);
+    line-height: 1;
+  }
+  .led-stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--pfl-grey-light);
+    margin-top: 6px;
+  }
+
+  /* === COMMERCIAL === */
+  .fin-block {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 0;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    margin-top: 16px;
+  }
+  .fin-fee {
+    background: linear-gradient(135deg, var(--pfl-red-dark) 0%, var(--pfl-red) 100%);
+    padding: 48px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .fin-fee::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(45deg, transparent, transparent 22px, rgba(0,0,0,0.05) 22px, rgba(0,0,0,0.05) 23px);
+    pointer-events: none;
+  }
+  .fin-fee-label {
+    position: relative;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .fin-fee-amount {
+    position: relative;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: clamp(48px, 5.5vw, 78px);
+    line-height: 0.95;
+    color: var(--white);
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+  .fin-fee-note {
+    position: relative;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: rgba(255,255,255,0.85);
+    margin-top: 14px;
+    letter-spacing: 0.08em;
+  }
+  .fin-terms {
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .fin-term-item .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--pfl-grey-light);
+    margin-bottom: 8px;
+  }
+  .fin-term-item .val {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--bone);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  /* === DOWNLOAD CTA === */
+  .download-cta {
+    background: linear-gradient(135deg, var(--pfl-blue) 0%, var(--pfl-blue-dark) 100%);
+    border: 1px solid var(--pfl-blue-light);
+    padding: 56px 48px;
+    margin-top: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .download-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(135deg, transparent, transparent 30px, rgba(255,255,255,0.02) 30px, rgba(255,255,255,0.02) 31px);
+    pointer-events: none;
+  }
+  .download-cta-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: center;
+    position: relative;
+  }
+  .download-cta h3 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .download-cta p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    max-width: 540px;
+  }
+
+  /* === FOOTER === */
+  footer {
+    border-top: 1px solid var(--line);
+    margin-top: 60px;
+    padding: 32px;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+  footer::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--pfl-red);
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--pfl-grey-light);
+  }
+
+  /* === LED DETAIL (single section) === */
+  .led-detail { max-width: 1000px; }
+  .led-lead {
+    font-family: 'Saira', sans-serif;
+    font-size: 19px;
+    color: var(--bone);
+    line-height: 1.5;
+    margin-bottom: 24px;
+    max-width: 820px;
+  }
+  .led-points { list-style: none; margin-bottom: 8px; }
+  .led-points li {
+    color: var(--pfl-grey-light);
+    font-size: 16px;
+    padding: 9px 0 9px 26px;
+    position: relative;
+  }
+  .led-points li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 18px;
+    width: 14px; height: 2px;
+    background: var(--pfl-red);
+  }
+  .led-points strong { color: var(--bone); font-weight: 600; }
+
+  /* === WATCH IN ACTION BUTTON (pulsing) === */
+  .watch-btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 28px 0;
+  }
+  .watch-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    background: linear-gradient(135deg, #3b82ff 0%, #1746c9 100%);
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    padding: 26px 56px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    box-shadow: 0 10px 40px rgba(59,130,255,0.55);
+    animation: watchPulse 1.8s ease-in-out infinite;
+  }
+  .watch-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 16px 54px rgba(59,130,255,0.8);
+    animation-play-state: paused;
+  }
+  .watch-btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px; height: 42px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+  }
+  .watch-btn-icon svg { width: 22px; height: 22px; margin-left: 3px; }
+  @keyframes watchPulse {
+    0%   { box-shadow: 0 10px 40px rgba(59,130,255,0.55), 0 0 0 0 rgba(59,130,255,0.6); }
+    70%  { box-shadow: 0 10px 40px rgba(59,130,255,0.55), 0 0 0 28px rgba(59,130,255,0); }
+    100% { box-shadow: 0 10px 40px rgba(59,130,255,0.55), 0 0 0 0 rgba(59,130,255,0); }
+  }
+
+  /* === VIDEO MODAL === */
+  .video-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .video-modal.open { display: flex; }
+  .video-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(5,8,16,0.82);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    animation: fadeIn 0.25s ease;
+  }
+  .video-modal-dialog {
+    position: relative;
+    width: 100%;
+    max-width: 1040px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--panel);
+    border: 1px solid var(--line-2);
+    border-radius: 8px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    animation: modalUp 0.3s ease;
+  }
+  .video-modal-dialog::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--pfl-red);
+    border-radius: 8px 8px 0 0;
+  }
+  .video-modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 26px;
+    border-bottom: 1px solid var(--line);
+  }
+  .video-modal-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--white);
+  }
+  .video-modal-close {
+    width: 40px; height: 40px;
+    border: 1px solid var(--line-2);
+    background: transparent;
+    border-radius: 50%;
+    color: var(--pfl-grey-light);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+  .video-modal-close:hover {
+    background: var(--pfl-red);
+    border-color: var(--pfl-red);
+    color: #fff;
+  }
+  .video-modal-close svg { width: 18px; height: 18px; }
+  .video-modal-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    padding: 26px;
+  }
+  .video-item { position: relative; }
+  .video-item-label {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--pfl-red);
+    margin-bottom: 10px;
+    display: inline-block;
+    padding: 4px 12px;
+    border: 1px solid var(--pfl-red);
+    border-radius: 3px;
+    background: rgba(255,4,4,0.08);
+  }
+  .video-item video {
+    width: 100%;
+    border-radius: 6px;
+    background: #000;
+    display: block;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes modalUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 900px) {
+    .topbar-inner { padding: 12px 20px; flex-wrap: wrap; gap: 12px; }
+    .top-meta { gap: 10px; }
+    .top-meta > span:first-child { display: none; }
+    .btn-download span { display: inline; }
+    .btn-download { padding: 9px 14px; font-size: 11px; }
+    .brand-lockup { gap: 10px; }
+    .brand-lockup img { height: 22px; }
+    .brand-divider { height: 22px; }
+
+    .hero { padding: 40px 20px 32px; }
+    .logo-eyebrow { gap: 18px; margin-bottom: 28px; }
+    .logo-eyebrow img { height: 44px; }
+    .logo-eyebrow .logo-divider { height: 38px; }
+
+    section { padding: 48px 20px; }
+    .section-head { gap: 16px; margin-bottom: 32px; padding-bottom: 16px; flex-wrap: wrap; }
+    .section-kicker { width: 100%; margin-top: 4px; }
+
+    .hero-meta { grid-template-columns: repeat(2, 1fr); }
+    .hero-meta-cell { padding: 18px; }
+    .hero-meta-cell:nth-child(odd) { padding-left: 0; }
+    .hero-meta-value { font-size: 20px; }
+
+    .events-grid { grid-template-columns: 1fr; }
+    .event-card { padding: 24px; }
+    .event-card .ev-city { font-size: 32px; }
+    .event-card .ev-tag { top: 24px; right: 24px; }
+
+    .activation-head { grid-template-columns: 40px 1fr 32px; gap: 16px; padding: 20px 16px; }
+    .activation-tag { display: none; }
+    .activation-title { font-size: 18px; }
+    .activation-body { padding: 0 16px 24px 72px; }
+    .activation-body p, .activation-body li { font-size: 14px; }
+
+    .led-panel { aspect-ratio: 16/9; }
+    .led-panel-cap { padding: 22px 18px 14px; font-size: 10px; letter-spacing: 0.2em; }
+    .led-stat-strip { grid-template-columns: repeat(2, 1fr); gap: 18px; padding: 20px; }
+    .led-stat-num { font-size: 24px; }
+
+    .led-lead { font-size: 16px; }
+    .led-points li { font-size: 14px; }
+    .watch-btn { font-size: 19px; padding: 20px 32px; width: 100%; justify-content: center; }
+    .watch-btn-icon { width: 34px; height: 34px; }
+    .watch-btn-icon svg { width: 18px; height: 18px; }
+    .video-modal { padding: 12px; }
+    .video-modal-body { grid-template-columns: 1fr; gap: 18px; padding: 18px; }
+    .video-modal-head { padding: 16px 18px; }
+    .video-modal-title { font-size: 19px; }
+
+    .fin-block { grid-template-columns: 1fr; }
+    .fin-fee { padding: 36px 24px; }
+    .fin-fee-amount { font-size: 48px; }
+    .fin-terms { padding: 28px 24px; grid-template-columns: 1fr; gap: 20px; }
+    .fin-term-item .val { font-size: 20px; }
+    .download-cta { padding: 36px 24px; }
+    .download-cta-inner { grid-template-columns: 1fr; gap: 20px; }
+    .download-cta h3 { font-size: 26px; }
+    .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  /* Small phones — extra tight */
+  @media (max-width: 480px) {
+    .hero { padding: 32px 18px 28px; }
+    .hero h1 { font-size: 44px; }
+    .hero-sub { font-size: 16px; }
+    section { padding: 40px 18px; }
+    .section-title { font-size: 30px; }
+    .event-card .ev-city { font-size: 28px; }
+    .event-card .ev-date { font-size: 18px; }
+    .activation-head { padding: 18px 14px; gap: 12px; grid-template-columns: 32px 1fr 28px; }
+    .activation-num { font-size: 11px; }
+    .activation-title { font-size: 16px; }
+    .activation-body { padding: 0 14px 20px 58px; }
+    .led-stat-strip { padding: 16px; gap: 14px; }
+    .fin-fee-amount { font-size: 42px; }
+    .btn-pdf-hero { width: 100%; justify-content: center; padding: 14px 20px; }
+    .hero-cta { flex-direction: column; align-items: stretch; }
+    .cta-note { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand-lockup">
+      <img src="assets/logos/pfl-logo.png" alt="PFL" />
+      <div class="brand-divider"></div>
+      <img src="assets/logos/myprize-logo.png" alt="MyPrize" />
+    </div>
+    <div class="top-meta">
+      <span><span class="dot"></span>LED Activation · Live</span>
+      <button class="dl-page-btn" id="dlPageBtn" type="button">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M8 1v9m0 0l-3-3m3 3l3-3M2 12v2a1 1 0 001 1h10a1 1 0 001-1v-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Download</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="eyebrow">MyPrize Sponsored Activation</div>
+  <h1>
+    MyPrize <span class="red">Sponsored</span><br>
+    LED <span class="ghost">Activation</span>
+  </h1>
+  <p class="hero-sub">A signature on-the-night fan activation: attendees receive a MyPrize-branded LED wristband on entry, turning the arena into a synchronised sea of MyPrize blue for TV cameras and social capture.</p>
+
+  <div class="hero-meta">
+    <div class="hero-meta-cell">
+      <div class="hero-meta-label">Distribution</div>
+      <div class="hero-meta-value">All Attendees</div>
+    </div>
+    <div class="hero-meta-cell">
+      <div class="hero-meta-label">Live Moments</div>
+      <div class="hero-meta-value">3 × Per Night</div>
+    </div>
+    <div class="hero-meta-cell">
+      <div class="hero-meta-label">Control</div>
+      <div class="hero-meta-value">Production-Run</div>
+    </div>
+    <div class="hero-meta-cell">
+      <div class="hero-meta-label">Broadcast</div>
+      <div class="hero-meta-value fee">On-Air Cut-Ins</div>
+    </div>
+  </div>
+</div>
+
+<!-- LED ACTIVATION (single section) -->
+<section id="led-activation">
+  <div class="section-head">
+    <div class="section-num">★</div>
+    <div class="section-title">How It Works</div>
+    <div class="section-kicker">Fan-worn · In-venue · On-air</div>
+  </div>
+
+  <div class="led-detail">
+    <p class="led-lead">Co-branded LED wristbands turn every seat into part of the show &mdash; a synchronised, broadcast-ready moment that puts MyPrize blue across the entire arena.</p>
+    <ul class="led-points">
+      <li><strong>Universal distribution</strong> &mdash; co-branded LED wristbands for all attendees on entry</li>
+      <li><strong>3 &times; in-event moments</strong> &mdash; a randomly selected wristband &ldquo;lights up&rdquo; three times throughout the night, locating a winning fan in-crowd</li>
+      <li><strong>Winners receive co-branded PFL &amp; MyPrize merch</strong>, presented on the night</li>
+      <li><strong>TV production awareness</strong> &mdash; broadcast cut-ins to the lit-up fan moments, building three storylines through the card</li>
+      <li><strong>Consistent visual branding</strong> across the arena &mdash; synced colour, logo lockup, fan-led activation</li>
+    </ul>
+
+    <div class="led-showcase">
+      <div class="led-panel in-arena">
+        <div class="led-panel-img"></div>
+        <div class="led-panel-cap">In-Arena · Crowd Lit</div>
+      </div>
+
+      <!-- WATCH IN ACTION BUTTON (centered between panels) -->
+      <div class="watch-btn-wrap">
+        <button class="watch-btn" id="watchBtn" type="button">
+          <span class="watch-btn-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M7 5v14l11-7L7 5z" fill="currentColor"/></svg>
+          </span>
+          Watch In Action
+        </button>
+      </div>
+
+      <div class="led-panel on-wrist">
+        <div class="led-panel-img"></div>
+        <div class="led-panel-cap">On-Wrist · In Hand</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="videoModal" aria-hidden="true">
+  <div class="video-modal-backdrop" id="videoModalBackdrop"></div>
+  <div class="video-modal-dialog" role="dialog" aria-modal="true" aria-label="PFL Lyon LED Activation">
+    <div class="video-modal-head">
+      <div class="video-modal-title">PFL Lyon LED Activation</div>
+      <button class="video-modal-close" id="videoModalClose" type="button" aria-label="Close">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="video-modal-body">
+      <div class="video-item">
+        <div class="video-item-label">V1</div>
+        <video controls playsinline preload="metadata" src="assets/videos/v1.mp4"></video>
+      </div>
+      <div class="video-item">
+        <div class="video-item-label">V2</div>
+        <video controls playsinline preload="metadata" src="assets/videos/v2.mp4"></video>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>PFL &amp; MyPrize · Sponsored LED Activation</div>
+    <div>Confidential · For Discussion</div>
+  </div>
+</footer>
+
+<script>
+  // === Download this page as a self-contained HTML file ===
+  const dlPageBtn = document.getElementById('dlPageBtn');
+  if (dlPageBtn) {
+    dlPageBtn.addEventListener('click', () => {
+      const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([html], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'MyPrize_LED_Activation.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    });
+  }
+
+  // === Video modal controls ===
+  const modal = document.getElementById('videoModal');
+  const watchBtn = document.getElementById('watchBtn');
+  const closeBtn = document.getElementById('videoModalClose');
+  const backdrop = document.getElementById('videoModalBackdrop');
+  const videos = modal.querySelectorAll('video');
+
+  function openModal() {
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    // pause + reset videos on close
+    videos.forEach(v => { v.pause(); });
+  }
+
+  watchBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  // When one video plays, pause the other
+  videos.forEach(v => {
+    v.addEventListener('play', () => {
+      videos.forEach(other => { if (other !== v) other.pause(); });
+    });
+  });
+</script>
+
+</body>
+</html>
